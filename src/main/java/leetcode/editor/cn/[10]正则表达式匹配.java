@@ -80,7 +80,7 @@ class Solution {
             sp += matchNum;
             pp += pS.length();
         }
-        return sp == s.length();
+        return sp == s.length() && pp == p.length();
     }
 
     /**
