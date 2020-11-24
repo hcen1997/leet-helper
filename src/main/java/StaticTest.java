@@ -1,4 +1,3 @@
-import sun.net.www.http.HttpClient;
 
 public class StaticTest {
     static StaticTest s=new StaticTest();

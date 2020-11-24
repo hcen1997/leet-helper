@@ -73,6 +73,7 @@ class Solution {
             if (pS.length() == 0) {
                 break;
             }
+            // 这里有可能性,要遍历
             final int matchNum = match(sS, pS);
             if (matchNum == -1) {
                 break;
