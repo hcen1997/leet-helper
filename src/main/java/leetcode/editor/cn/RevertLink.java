@@ -1,5 +1,7 @@
 package leetcode.editor.cn;
 
+import leetcode.ListNode;
+
 public class RevertLink {
     public ListNode reverseList(ListNode head) {
         if (head == null) {

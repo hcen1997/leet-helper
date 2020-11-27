@@ -1,14 +1,9 @@
 package leetcode.editor.cn;
 
-public class RemoveAllFromLink {
-    public class ListNode {
-        int val;
-        ListNode next;
+import leetcode.ListNode;
 
-        ListNode(int x) {
-            val = x;
-        }
-    }
+public class RemoveAllFromLink {
+
 
     public ListNode removeElements(ListNode head, int val) {
         // 不能老从机器的方面想

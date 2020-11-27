@@ -1,6 +1,8 @@
 package leetcode.editor.cn;
 
 
+import leetcode.TreeNode;
+
 public class InvertTree {
     public TreeNode invertTree(TreeNode root) {
         if(root==null){

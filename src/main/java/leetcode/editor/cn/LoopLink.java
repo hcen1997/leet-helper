@@ -1,5 +1,7 @@
 package leetcode.editor.cn;
 
+import leetcode.ListNode;
+
 public class LoopLink {
     public static void main(String[] args) {
     }
