@@ -1,0 +1,44 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Java template
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+.idea/.gitignore
+.idea/Leet-code-helper.iml
+.idea/compiler.xml
+.idea/inspectionProfiles/
+.idea/jarRepositories.xml
+.idea/junitgenerator-prj-settings.xml
+.idea/leetcode/
+.idea/misc.xml
+.idea/uiDesigner.xml
+.idea/vcs.xml
+Leet-code-helper.iml
+pom.xml
+"src/main/java/leetcode/editor/cn/[11]\347\233\233\346\234\200\345\244\232\346\260\264\347\232\204\345\256\271\345\231\250.java"
+"src/main/java/leetcode/editor/cn/[15]\344\270\211\346\225\260\344\271\213\345\222\214.java"
+src/main/python/
+src/main/resources/
+src/test/
+target/

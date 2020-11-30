@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Utils {
 //    int[] trans(String s){
 //        assert s.indexOf("[")==0;
@@ -13,4 +15,11 @@ public class Utils {
 //                "[  ]"
 //        }
 //    }
+    public static int[] toArray(ArrayList<Integer> nums){
+        int[] ints = new int[nums.size()];
+        for (int i = 0; i < ints.length; i++) {
+            ints[i] = nums.get(i);
+        }
+        return ints;
+    }
 }

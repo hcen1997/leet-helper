@@ -35,7 +35,6 @@ public class LowestCommonAncestorBST {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         boolean lp = find(root.left, p);
         boolean lq = find(root.left, q);
-//        System.out.println(root.left.val + " "+ root.right.val);
         if(root.val==p.val ||root.val==q.val){
             return root;
         }
