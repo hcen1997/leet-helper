@@ -8,9 +8,20 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Timer;
 
 public class TimeNeedAllEmployeeTest extends TimeNeedAllEmployee {
+
+    @Test
+    public void map(){
+        HashMap<Integer, Integer> integerIntegerHashMap = new HashMap<>();
+        integerIntegerHashMap.put(1,1);
+        integerIntegerHashMap.put(1,2);
+        System.out.println();
+    }
+
 
     @Test
     public void numOfMinutes() throws IOException {
