@@ -1,12 +1,5 @@
 package leetcode.editor.cn;
 
-import javax.sound.midi.Instrument;
-import java.util.ArrayList;
-
-import sun.instrument.InstrumentationImpl;
-
-import java.util.LinkedHashMap;
-import java.util.List;
 
 public class CountPrime {
     boolean isPrimes(int n) {

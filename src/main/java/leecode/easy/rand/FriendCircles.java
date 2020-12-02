@@ -22,8 +22,8 @@ public class FriendCircles {
                     } else if (jF != -1 && iF == -1) {
                         groupStruct.add(jF, i);
                         System.out.println(222);
-                    } else {
-                        continue;
+                    } else if(jF!=iF){
+                        groupStruct.marge(jF,iF);
                     }
                 }
             }
@@ -58,6 +58,11 @@ public class FriendCircles {
 
         public int size() {
             return groupList.size();
+        }
+
+        public void marge(int i, int j) {
+            groupList.get(i).addAll(groupList.get(j));
+            groupList.remove(j);
         }
     }
 

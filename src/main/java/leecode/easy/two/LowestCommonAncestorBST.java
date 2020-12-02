@@ -6,8 +6,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import static leetcode.MainClass.stringToTreeNode;
-import static leetcode.MainClass.treeNodeToString;
+import static leetcode.Utils.stringToTreeNode;
+import static leetcode.Utils.treeNodeToString;
 
 public class LowestCommonAncestorBST {
     public static void main(String[] args) throws IOException {
