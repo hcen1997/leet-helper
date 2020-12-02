@@ -39,4 +39,15 @@ public class TimeNeedAllEmployeeTest extends TimeNeedAllEmployee {
         System.out.println("i1 = " + i1);
         System.out.println("l1 time = " + l1);
     }
+    @Test
+    public void t2(){
+        int n = 1;
+        int headId = 0;
+        String m = "[-1]";
+        String i = "[0]";
+        int[] ints = Utils.stringToIntegerArray(m);
+        int[] ints1 = Utils.stringToIntegerArray(i);
+        int i1 = numOfMinutes(n, headId, ints, ints1);
+        System.out.println("i1 = " + i1);
+    }
 }
