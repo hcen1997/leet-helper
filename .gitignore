@@ -175,3 +175,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+/src/test/java/Demo.java
+/src/test/java/Demo1.java
+/src/test/java/SolutionTest.java
+/src/test/java/Test.java
