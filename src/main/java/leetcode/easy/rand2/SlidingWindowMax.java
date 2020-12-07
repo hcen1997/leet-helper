@@ -6,13 +6,38 @@ import java.util.PriorityQueue;
 
 public class SlidingWindowMax {
 
-    public int[] maxSlidingWindow1(int[] nums, int k) {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        if(nums.length<50000){
+            return maxSlidingWindow1(nums,k);
+        }
         // 维护最大数
         // 最大数如果出去触发堆重建
-        return nums;
+        int size = nums.length - k + 1;
+        int[] ans = new int[size];
+        int maxCount = 0;
+        int big = Integer.MAX_VALUE;
+        PriorityQueue<Integer> bigger = new PriorityQueue<>(k, Comparator.reverseOrder());
+        for (int i = 0; i < nums.length; i++) {
+            bigger.add(nums[i]);
+            if (i > k - 1&& nums[i-k]==bigger.peek()) {
+                maxCount--;
+                if(maxCount==0){
+                    bigger.clear();
+                    for (int j = i-k; j <= i; j++) {
+                        bigger.add(nums[j]);
+                    }
+                }
+            }
+            if (i >= k - 1) {
+                ans[i - k + 1] = bigger.peek();
+                big = bigger.peek();
+                maxCount++;
+            }
+        }
+        return ans;
     }
 
-    public int[] maxSlidingWindow(int[] nums, int k) {
+    public int[] maxSlidingWindow1(int[] nums, int k) {
         if (k == 1) {
             return nums;
         }
