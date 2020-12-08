@@ -14,7 +14,7 @@ public class Permutations {
     }
 
     List<Integer> doPermute(int[] sub, int head){
-
+return null;
     }
 
     int[] getExclude(int[] n, int i) {
