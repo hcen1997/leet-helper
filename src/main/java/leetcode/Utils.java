@@ -43,6 +43,22 @@ public class Utils {
         }
         return output;
     }
+    public static String[] stringToStringArray(String input) {
+        input = input.trim();
+        input = input.substring(1, input.length() - 1);
+        if (input.length() == 0) {
+            return new String[0];
+        }
+
+        String[] parts = input.split(",");
+        String[] output = new String[parts.length];
+        for(int index = 0; index < parts.length; index++) {
+            String part = parts[index].trim();
+            part = part.substring(1, part.length() - 1);
+            output[index] = part;
+        }
+        return output;
+    }
 
     public static int[][] stringToInt2dArray(String input) {
         JSONArray jsonArray = JSONArray.parseArray(input);
