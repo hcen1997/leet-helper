@@ -5,8 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>top_thread_test</artifactId>
+    <artifactId>leet-helper</artifactId>
     <version>1.0.0</version>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.4</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <repositories>
         <repository>
