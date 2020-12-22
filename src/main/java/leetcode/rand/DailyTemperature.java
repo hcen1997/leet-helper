@@ -9,7 +9,6 @@ public class DailyTemperature {
         int[] ints = dt.dailyTemperatures(tt);
         System.out.println("Arrays.toString(ints) = " + Arrays.toString(ints));
     }
-
     public int[] dailyTemperatures(int[] T) {
         int[] waitDays = new int[T.length];
         for (int i = 0; i < T.length; i++) {
