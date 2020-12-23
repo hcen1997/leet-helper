@@ -1,5 +1,9 @@
 import java.util.HashMap;
 
+/**
+ * 转移 leetcode 706. 设计哈希映射
+ */
+@Deprecated
 public class Hashmap {
     public static void main(String[] args) {
         Hashmap hashmap = new Hashmap();

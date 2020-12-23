@@ -1,5 +1,6 @@
 package leetcode.easy.rand4;
 
+// fixme: 超时
 public class SumAfterQuery {
     public int[] sumEvenAfterQueries(int[] A, int[][] queries) {
         int[] ans = new int[queries.length];
