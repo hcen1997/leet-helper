@@ -66,14 +66,23 @@ class MyHashMap {
      */
     public void remove(int key) {
         // woc 这个remove不好写， 因为变地址会引起loc失常
-        if(get(key)==-1){
+        // 那就不用table了
+        if (get(key) == -1) {
             return;
         }
         int h = key % 31;
-        // 不存在
-        // 只有一个
-
-        // 是个list
+        ArrayList<KeyLoc> keySet = hash.get(h);
+        if (keySet.size() == 1) {
+            keySet.remove(0);
+            return;
+        } else {
+            for (int i = 0; i < keySet.size(); i++) {
+                if (keySet.get(i).key == key) {
+                    return table.get(keySet.get(i).loc);
+                }
+            }
+            return -1;
+        }
     }
 
     class KeyLoc {
