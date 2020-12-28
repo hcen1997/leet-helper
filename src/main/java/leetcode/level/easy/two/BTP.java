@@ -7,6 +7,9 @@ import java.util.List;
 
 public class BTP {
     public List<String> binaryTreePaths(TreeNode root) {
+        if(root==null){
+            return new ArrayList<>();
+        }
         List<String> ans = new ArrayList<>();
         List<List<TreeNode>> paths = new ArrayList<>();
         ArrayList<TreeNode> data = new ArrayList<>();
@@ -21,6 +24,9 @@ public class BTP {
     }
 
     void dfs(TreeNode root, ArrayList<TreeNode> his, List<List<TreeNode>> paths) {
+        if(root==null){
+            return;
+        }
         if (root.left == null && root.right == null) {
             paths.add(copy(his));
             his.remove(his.size() - 1);
