@@ -78,10 +78,10 @@ class MyHashMap {
         } else {
             for (int i = 0; i < keySet.size(); i++) {
                 if (keySet.get(i).key == key) {
-                    return table.get(keySet.get(i).loc);
+//                    return table.get(keySet.get(i).loc);
                 }
             }
-            return -1;
+//            return -1;
         }
     }
 
