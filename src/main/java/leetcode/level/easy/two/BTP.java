@@ -39,6 +39,7 @@ public class BTP {
         if (root.right != null) {
             his.add(root.right);
             dfs(root.right, his, paths);
+
         }
         his.remove(his.size() - 1);
     }

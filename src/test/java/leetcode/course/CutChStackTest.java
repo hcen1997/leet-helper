@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-public class CutStackTest extends CutStack {
+public class CutChStackTest extends CutStack {
     @Test
     public void cutOncetest() {
         ArrayList<Pice> ans = new ArrayList<>();
