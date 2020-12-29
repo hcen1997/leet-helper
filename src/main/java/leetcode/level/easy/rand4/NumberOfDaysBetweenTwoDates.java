@@ -9,9 +9,11 @@ public class NumberOfDaysBetweenTwoDates {
 
         int d1 = calDaysToOne(ints1[0], ints1[1], ints1[2]);
         int d2 = calDaysToOne(ints2[0], ints2[1], ints2[2]);
-        return d1 - d2;
+        return Math.abs(d1 - d2);
     }
-
+    public static boolean isLeap(long year) {
+        return ((year & 3) == 0) && ((year % 100) != 0 || (year % 400) == 0);
+    }
     int calDaysToOne(int y, int m, int d) {
             y--;
         int normal = y * 365;
@@ -20,7 +22,7 @@ public class NumberOfDaysBetweenTwoDates {
         int[] mMapLeap = {0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335};
 
         int yd = normal + leap;
-        int md = isLeap(y) ? mMapLeap[m - 1] : mMap[m - 1];
+        int md = isLeap(y+1) ? mMapLeap[m - 1] : mMap[m - 1];
         int dd = d - 1;
         return yd + md + dd;
     }

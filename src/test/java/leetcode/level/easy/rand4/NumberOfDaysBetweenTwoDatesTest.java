@@ -48,5 +48,19 @@ public class NumberOfDaysBetweenTwoDatesTest extends NumberOfDaysBetweenTwoDates
         int i = daysBetweenDates(d1, d2);
         assertEquals(145731+366, i);
     }
+    @Test
+    public void testDaysBetweenDates12111() {
+        String d1 = "2020-01-15";
+        String d2 = "2019-12-31";
+        int i = daysBetweenDates(d1, d2);
+        assertEquals(15, i);
+    }
+    @Test
+    public void testDaysBetweenDates121111() {
+        String d1 = "2009-08-18";
+        String d2 = "2080-08-08";
+        int i = daysBetweenDates(d1, d2);
+        assertEquals(25923, i);
+    }
 
 }
