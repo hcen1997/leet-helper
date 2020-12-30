@@ -25,6 +25,7 @@ public class NumberOfDaysBetweenTwoDates {
         int md = isLeap(y+1) ? mMapLeap[m - 1] : mMap[m - 1];
         int dd = d - 1;
         return yd + md + dd;
+
     }
 
     int[] stringToDate(String date) {
