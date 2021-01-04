@@ -1,6 +1,7 @@
 package leetcode.level.easy.rand4;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,17 +18,10 @@ import java.util.List;
  */
 public class SumAfterQuery {
     public int[] sumEvenAfterQueries(int[] A, int[][] queries) {
-        List<Boolean> isEvenArr = new ArrayList<>();
-        Integer allEvenSum = 0;
-        for (int value : A) {
-            boolean e = isEven(value);
-            if (e) {
-                isEvenArr.add(true);
-                allEvenSum += value;
-            }else {
-                isEvenArr.add(false);
-            }
-        }
+        List<Boolean> isEvenArr = Arrays.stream(A).collect(ArrayList::new,
+                (booleans, value) -> booleans.add(isEven(value)),
+                ArrayList::addAll);
+        int allEvenSum = Arrays.stream(A).filter(this::isEven).sum();
         int[] ans = new int[queries.length];
         int val, index;
         for (int i = 0, queriesLength = queries.length; i < queriesLength; i++) {
