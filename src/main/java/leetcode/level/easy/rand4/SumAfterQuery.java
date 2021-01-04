@@ -16,37 +16,50 @@ import java.util.List;
  * // A 大小1w
  */
 public class SumAfterQuery {
-    // 偶数加偶数是偶数
-    // 偶数加奇数是奇数
-    // 奇数加奇数是偶数
-
     public int[] sumEvenAfterQueries(int[] A, int[][] queries) {
         List<Boolean> isEvenArr = new ArrayList<>();
-        int[] ans = new int[queries.length];
-        int allEvenSum = 0;
+        Integer allEvenSum = 0;
         for (int value : A) {
             boolean e = isEven(value);
             if (e) {
                 isEvenArr.add(true);
                 allEvenSum += value;
+            }else {
+                isEvenArr.add(false);
             }
         }
+        int[] ans = new int[queries.length];
         int val, index;
-        for (int[] query : queries) {
+        for (int i = 0, queriesLength = queries.length; i < queriesLength; i++) {
+            int[] query = queries[i];
             val = query[0];
             index = query[1];
             boolean isValEven = isEven(val);
             boolean isArrItemEven = isEvenArr.get(index);
-            // 偶数加偶数是偶数
-            if (isValEven) {
-                if (isArrItemEven) {
-
-                }
+            if (isValEven && isArrItemEven) {
+                // 偶数加偶数是偶数
+                allEvenSum += val;
+                A[index] += val;
+                isEvenArr.set(index, true);
+            } else if (isArrItemEven) {
+                // 偶数加奇数是奇数 // 本来是偶数
+                allEvenSum -= A[index];
+                A[index] += val;
+                isEvenArr.set(index, false);
+            } else if (isValEven) {
+                // 偶数加奇数是奇数  // 本来是奇数
+//                allEvenSum -= A[index];
+                A[index] += val;
+                isEvenArr.set(index, false);
+            } else {
+                // 奇数加奇数是偶数
+                A[index] += val;
+                allEvenSum += A[index];
+                isEvenArr.set(index, true);
             }
-            // 偶数加奇数是奇数
-            // 奇数加奇数是偶数
-
+            ans[i]=allEvenSum;
         }
+        return ans;
     }
 
     // 模拟法太慢了, 需要使用分析来优化运行时间
@@ -74,6 +87,6 @@ public class SumAfterQuery {
     }
 
     boolean isEven(int i) {
-        return i / 2 == 0;
+        return i % 2 == 0;
     }
 }
