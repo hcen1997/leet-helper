@@ -51,7 +51,7 @@ public class FirstBadVersion extends VersionControl {
         if (end - start < 32) {
             return findInRange(start, end);
         }
-        int mid = start + end / 2;
+        int mid = (int)(((long) start + (long)end) / 2);
         boolean isMidBad = isBadVersion(mid);
         if (isMidBad) {
             return findBinary(start, mid);
