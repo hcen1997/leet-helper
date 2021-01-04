@@ -14,7 +14,7 @@ public class NumberOfDaysBetweenTwoDates {
     public static boolean isLeap(long year) {
         return ((year & 3) == 0) && ((year % 100) != 0 || (year % 400) == 0);
     }
-    int calDaysToOne(int y, int m, int d) {
+    private int calDaysToOne(int y, int m, int d) {
             y--;
         int normal = y * 365;
         int leap = y / 4 - y / 100 + y / 400;
