@@ -6,7 +6,6 @@ import org.junit.Test;
 public class IsRectangleOverlapTest extends IsRectangleOverlap {
     @Test
     public void test1() {
-
         int[] rec1 = Utils.stringToIntegerArray("[2,17,6,20]");
         int[] rec2 = Utils.stringToIntegerArray("[3,8,6,20]");
         boolean rectangleOverlap = isRectangleOverlap(rec1, rec2);
