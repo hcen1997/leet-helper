@@ -11,7 +11,15 @@ public class IsRectangleOverlap {
                 && inRange(rec2[1], rec1[1], rec1[3]);
         boolean second = inRange(rec2[1], rec1[1], rec1[3])
                 && inRange(rec2[2], rec1[1], rec1[2]);
-        return first || second;
+        boolean rec2InRec1 =  first || second;
+
+        boolean revFirst = inRange(rec1[0], rec2[0], rec2[2])
+                && inRange(rec1[1], rec2[1], rec2[3]);
+        boolean revSecond = inRange(rec1[1], rec2[1], rec2[3])
+                && inRange(rec1[2], rec2[1], rec2[2]);
+        boolean rec1InRec2 =  revFirst || revSecond;
+
+        return rec1InRec2 || rec2InRec1;
     }
 
     private boolean same(int[] rec1, int[] rec2) {
