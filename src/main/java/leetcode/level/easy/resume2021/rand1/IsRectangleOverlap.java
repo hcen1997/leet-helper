@@ -10,7 +10,7 @@ public class IsRectangleOverlap {
         boolean first = inRange(rec2[0], rec1[0], rec1[2])
                 && inRange(rec2[1], rec1[1], rec1[3]);
         boolean second = inRange(rec2[1], rec1[1], rec1[3])
-                && inRange(rec2[2], rec1[2], rec1[4]);
+                && inRange(rec2[2], rec1[1], rec1[2]);
         return first || second;
     }
 
