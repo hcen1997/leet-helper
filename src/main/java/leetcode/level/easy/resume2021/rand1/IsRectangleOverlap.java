@@ -20,6 +20,10 @@ public class IsRectangleOverlap {
         boolean rec1InRec2 =  revFirst || revSecond;
 
         return rec1InRec2 || rec2InRec1;
+
+        // 此时还有一种可能, 角点不在内部, 但是由交点形成了正方形
+
+//        好麻烦, 算了
     }
 
     private boolean same(int[] rec1, int[] rec2) {
