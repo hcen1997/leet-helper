@@ -1,6 +1,7 @@
 package randcode;
 
 import java.sql.Date;
+import java.util.Scanner;
 
 class Test
 {
@@ -10,5 +11,7 @@ class Test
 
    Date d= new Date(  11);
    System.out.println(d.getClass().getName());
+       Scanner scanner = new Scanner(System.in);
+       int i = scanner.nextInt();
    }
 }

@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Queue;
 
 
-public class ThreePreorder {
+public class TreePreorder {
+
     public List<Integer> preorder(Node root) {
         List<Integer> ans = new ArrayList<>();
         if(root==null){
