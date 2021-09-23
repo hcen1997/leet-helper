@@ -2,12 +2,16 @@ package leetcode;
 
 import com.alibaba.fastjson.JSONArray;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Scanner;
 
 public class Utils {
-//    int[] trans(String s){
+    //    int[] trans(String s){
 //        assert s.indexOf("[")==0;
 //        assert s.indexOf("]")==s.length()-1;
 //        String nums = s.substring(1, s.length() - 1);
@@ -21,13 +25,14 @@ public class Utils {
 //                "[  ]"
 //        }
 //    }
-    public static int[] toArray(ArrayList<Integer> nums){
+    public static int[] toArray(ArrayList<Integer> nums) {
         int[] ints = new int[nums.size()];
         for (int i = 0; i < ints.length; i++) {
             ints[i] = nums.get(i);
         }
         return ints;
     }
+
     public static int[] stringToIntegerArray(String input) {
         input = input.trim();
         input = input.substring(1, input.length() - 1);
@@ -37,12 +42,13 @@ public class Utils {
 
         String[] parts = input.split(",");
         int[] output = new int[parts.length];
-        for(int index = 0; index < parts.length; index++) {
+        for (int index = 0; index < parts.length; index++) {
             String part = parts[index].trim();
             output[index] = Integer.parseInt(part);
         }
         return output;
     }
+
     public static String[] stringToStringArray(String input) {
         input = input.trim();
         input = input.substring(1, input.length() - 1);
@@ -52,7 +58,7 @@ public class Utils {
 
         String[] parts = input.split(",");
         String[] output = new String[parts.length];
-        for(int index = 0; index < parts.length; index++) {
+        for (int index = 0; index < parts.length; index++) {
             String part = parts[index].trim();
             part = part.substring(1, part.length() - 1);
             output[index] = part;
@@ -68,7 +74,7 @@ public class Utils {
 
         int[][] arr = new int[jsonArray.size()][];
         for (int i = 0; i < arr.length; i++) {
-            JSONArray  cols = (JSONArray)jsonArray.get(i);
+            JSONArray cols = (JSONArray) jsonArray.get(i);
             arr[i] = stringToIntegerArray(cols.toString());
         }
         return arr;
@@ -88,7 +94,7 @@ public class Utils {
         nodeQueue.add(root);
 
         int index = 1;
-        while(!nodeQueue.isEmpty()) {
+        while (!nodeQueue.isEmpty()) {
             TreeNode node = nodeQueue.remove();
 
             if (index == parts.length) {
@@ -126,12 +132,12 @@ public class Utils {
         String output = "";
         Queue<TreeNode> nodeQueue = new LinkedList<>();
         nodeQueue.add(root);
-        while(!nodeQueue.isEmpty()) {
+        while (!nodeQueue.isEmpty()) {
             TreeNode node = nodeQueue.remove();
 
             if (node == null) {
-              output += "null, ";
-              continue;
+                output += "null, ";
+                continue;
             }
 
             output += String.valueOf(node.val) + ", ";
@@ -141,4 +147,21 @@ public class Utils {
         return "[" + output.substring(0, output.length() - 2) + "]";
     }
 
+
+    public static String getLongTextIn(String path, int line) {
+        File file = new File(path);
+        Scanner scanner = null;
+
+        try {
+            String result = "";
+            scanner = new Scanner(new FileInputStream(file));
+            for (int i = 0; i < line; i++) {
+                result = scanner.nextLine();
+            }
+            return result;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 }

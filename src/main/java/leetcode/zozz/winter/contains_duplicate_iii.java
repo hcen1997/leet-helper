@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.TreeSet;
 
 /**
  * 给你一个整数数组 nums 和两个整数 k 和 t 。请你判断是否存在 两个不同下标 i 和 j，使得 abs(nums[i] - nums[j]) <= t ，同时又满足 abs(i - j) <= k 。
@@ -64,24 +65,85 @@ public class contains_duplicate_iii {
                 Utils.stringToIntegerArray("[2147483646,2147483647]")
                 , 3, 3
         ), true);
-
+        // 使用tree set 速度从1800降到300
+        long st = System.currentTimeMillis();
+        Assert.assertEquals(solution.containsNearbyAlmostDuplicate(
+                Utils.stringToIntegerArray(
+                        Utils.getLongTextIn("E:\\git\\leet-helper\\src\\main\\java\\leetcode\\zozz\\longtext\\longArray.txt",
+                                1)
+                )
+                , 10000, 0
+        ), false);
+        System.out.println("total " + (System.currentTimeMillis() - st));
+        Assert.assertEquals(solution.containsNearbyAlmostDuplicate(Utils.stringToIntegerArray("[1,2]"),
+                0,
+                1
+        ), false);
     }
 
-//        在 nums.length> 1000, k =1000, t=0的时候， 非常慢
-
+    //        在 nums.length> 1000, k =1000, t=0的时候， 非常慢
     class Solution {
         public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
+            return treeSetButFast(nums, k, t);
+        }
+
+
+        private boolean treeSetButFast(int[] nums, int k, int t) {
+            TreeSet<Long> treeSet = new TreeSet<>();
+
             for (int i = 0; i < nums.length; i++) {
-//                滑动窗口
+                Long ceiling = treeSet.ceiling((long) ((long) nums[i] - (long) t));
+                if (ceiling != null && ceiling <= (long) nums[i] + (long) t) {
+                    return true;
+                }
+
+                // treeSet 有重复的小问题, 但是在添加之前存在的话, 应该就返回true了
+                treeSet.add((long) nums[i]);
+                if (treeSet.size() == k + 1) {
+                    treeSet.remove((long) nums[i - k]);
+                }
+            }
+            return false;
+        }
+
+        // 这种滑动窗口， 只是减小了1/3的循环
+        // 为什么还是慢？ 要解决什么问题？？
+        // 遍历数组， 增加数字肯定是要做的
+        // 但是k变大的话， O(n)的单独（的查找算法太慢了
+        // 所以需要一个有序的, 删除, 添加, 查找速度都在log(n) 的数据结构,
+        // 就是tree set
+        private boolean complexButFast(int[] nums, int k, int t) {
+            // 滑动窗口
+            // 1. k中
+            // 1 2 3 4 5 6 7 8
+            long count = 0;
+            for (int i = Math.min(k, nums.length - 1); i < nums.length; i++) {
+                for (int j = 1; i - j >= 0 && j <= k; j++) {
+                    count++;
+                    if (Math.abs((long) nums[i] - (long) nums[i - j]) <= t) {
+                        return true;
+                    }
+                }
+            }
+            System.out.println("count = " + count);
+            return false;
+        }
+
+        private boolean simpleButSlow(int[] nums, int k, int t) {
+            long count = 0;
+            for (int i = 0; i < nums.length; i++) {
+//                窗口
                 int st = Math.max(i - k, 0);
                 int ed = Math.min(i + k, nums.length - 1);
                 for (int j = st; j != i && j <= ed; j++) {
                     // 考虑到负数
+                    count++;
                     if (Math.abs((long) nums[i] - (long) nums[j]) <= t) {
                         return true;
                     }
                 }
             }
+            System.out.println("count = " + count);
             return false;
         }
     }
