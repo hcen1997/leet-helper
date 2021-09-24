@@ -3,6 +3,9 @@ package leetcode.zozz.winter;
 import leetcode.Utils;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -54,8 +57,75 @@ public class combination_sum_ii {
 
     class Solution {
 
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> line = new ArrayList<>();
+
         public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-            return null;
+            // dfs 回溯 从前开始
+            Arrays.sort(candidates);
+            dfs(candidates, target, 0);
+            return ans;
+        }
+
+        private void dfs(int[] candidates, int target, int index) {
+            if (target == 0) {
+                System.out.println("addlist " + line.toString());
+                ans.add(new ArrayList<>(line));
+            }
+            for (int i = index; i < candidates.length; i++) {
+                if (candidates[i] <= target) {
+                    for (int j = 0; j < i; j++) {
+                        System.out.print("    " );
+                    }
+                    System.out.println("add " + candidates[i]);
+                    line.add(candidates[i]);
+                    for (int j = 0; j < i; j++) {
+                        System.out.print("    " );
+                    }
+                    System.out.println(String.format("dfs %s %s", target - candidates[i], candidates[i + 1]));
+                    dfs(candidates, target - candidates[i], i + 1);
+                    for (int j = 0; j < i; j++) {
+                        System.out.print("    " );
+                    }
+                    System.out.println("remove " + line.get(line.size() - 1));
+                    line.remove(line.size() - 1);
+                }
+            }
         }
     }
+//     add 1;
+//            1< 8:  add 1;
+//            1+1< 8 : add 2;
+//             1+2+1<8 : add5;
+//            1+1+2+5>8: remove 5;
+
+//            7<8: add 2;
+//            7+2>8: remove 2;
+//            7<8: add 1;
+//            7 +1 ==8: addlist 7,1;
+//            remove 1; find 1; skip 1;
+//            index == -1 : remove 7;
+//            add 6;
+//            6<8: add 5;
+//            6+5>8: remove 5;
+//            6<8: add 2;
+//            6+2==8: addlist 6,2;
+//            index!=-1: remove 2;
+//            6<8: add 1;
+//            6+1<8: add 1;
+//            6+1+1==8: addlist 6,1,1;
+//            index == -1: remove 1;
+//            index == -1: remove 1;
+//            index == -1: remove 6;
+//            add 5;
+//            5<8: add 2;
+//            5+2<8: add 1;
+//            5+2+1==8: addlist 5,2,1;
+//            remove 1, find 1, skip 1;
+//            index == -1: remove 2;
+//            5<8: add 1;
+//            5+1<8: add 1;
+//            5+1+1<8 && index ==-1: remove 1, remove 1, remove 1;
+//            ...
+    // 我是一个机器人
 }
