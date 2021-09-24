@@ -4,6 +4,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -13,6 +14,7 @@ import java.util.stream.Stream;
 public class SourceCodeFinder {
     public static void main(String[] args) {
         System.out.println("本软件读取某文件夹下所有以java结尾的文件");
+        System.out.println("使用方式 java SourceCodeFinder [dir] [out_file]");
         System.out.println("去掉注释和空行后");
         System.out.println("生成一个单一的文件");
         System.out.println("排序方法是文件和文件夹的字典序");
@@ -26,6 +28,14 @@ public class SourceCodeFinder {
         String dir = "E:\\git\\leet-helper\\src\\main\\java\\randcode";
         String ext = "java";
         String outFile = "E:\\tmp\\code_text_1.txt";
+        if (args.length > 1) {
+            dir = args[0];
+            outFile = args[1];
+        }
+        System.out.println("dir = " + dir);
+        System.out.println("outFile = " + outFile);
+
+
         File file = new File(dir);
         File out = new File(outFile);
         try (FileWriter fileWriter = new FileWriter(out)) {
