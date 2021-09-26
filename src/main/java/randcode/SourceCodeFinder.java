@@ -66,6 +66,7 @@ public class SourceCodeFinder {
             List<String> ans = new ArrayList<>();
             for (String line : strings) {
                 if (!line.trim().startsWith("//")
+                        && !line.trim().startsWith("import")
                         && line.trim().length() > 0) {
                     ans.add(line);
                 }
