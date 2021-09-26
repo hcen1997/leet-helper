@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
 /**
@@ -25,9 +26,9 @@ public class SourceCodeFinder {
 ////
         ////
         System.out.println("\n以下是文件列表");
-        String dir = "E:\\work\\南京所课题2项目\\policytool\\src\\main\\java";
+        String dir = "E:\\work\\biod-peds";
         String ext = ".java";
-        String outFile = "E:\\work\\软著申请\\code_text_policytool.txt";
+        String outFile = "E:\\work\\软著申请\\code_text_biod-peds.txt";
         if (args.length > 1) {
             dir = args[0];
             outFile = args[1];
@@ -40,9 +41,10 @@ public class SourceCodeFinder {
         File out = new File(outFile);
         try (FileWriter fileWriter = new FileWriter(out)) {
             Stream<Path> walk = Files.walk(file.toPath());
+            AtomicInteger i = new AtomicInteger(0);
             walk.forEach(path -> {
                 if (path.getFileName().toString().endsWith(ext)) {
-                    System.out.println(path.toString());
+                    System.out.printf("%04d %s\n", i.incrementAndGet(), path.toString());
                     List<String> lines = clean(path.toFile());
                     for (String line : lines) {
                         try {
