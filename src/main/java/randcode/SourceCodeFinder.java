@@ -25,9 +25,9 @@ public class SourceCodeFinder {
 ////
         ////
         System.out.println("\n以下是文件列表");
-        String dir = "E:\\git\\leet-helper\\src\\main\\java\\randcode";
-        String ext = "java";
-        String outFile = "E:\\tmp\\code_text_1.txt";
+        String dir = "E:\\work\\南京所课题2项目\\policytool\\src\\main\\java";
+        String ext = ".java";
+        String outFile = "E:\\work\\软著申请\\code_text_policytool.txt";
         if (args.length > 1) {
             dir = args[0];
             outFile = args[1];
