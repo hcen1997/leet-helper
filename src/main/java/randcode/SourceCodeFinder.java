@@ -24,7 +24,7 @@ public class SourceCodeFinder {
 
 
 ////
-        ////
+        //// vue 版本不可用, 因为java会说找不到主类
         System.out.println("\n以下是文件列表");
         String dir = "E:\\work\\biod-peds";
         String ext = ".java";
@@ -44,7 +44,9 @@ public class SourceCodeFinder {
             AtomicInteger i = new AtomicInteger(0);
             walk.forEach(path -> {
                 if (path.getFileName().toString().endsWith(ext)) {
-                    System.out.printf("%04d %s\n", i.incrementAndGet(), path.toString());
+
+//                    System.out.printf("%04d %s %d\n", i.incrementAndGet(), path.toString(),path.toFile().length());
+                    System.out.printf("%04d %s \n", i.incrementAndGet(), path.toString());
                     List<String> lines = clean(path.toFile());
                     for (String line : lines) {
                         try {
