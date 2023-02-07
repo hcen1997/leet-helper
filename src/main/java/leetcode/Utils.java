@@ -50,6 +50,7 @@ public class Utils {
     }
 
     public static String[] stringToStringArray(String input) {
+        // ["", ""] => {"",""}
         input = input.trim();
         input = input.substring(1, input.length() - 1);
         if (input.length() == 0) {

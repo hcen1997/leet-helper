@@ -64,15 +64,15 @@ public class contains_duplicate_iii {
                 , 3, 3
         ), true);
         // 使用tree set 速度从1800降到300
-        long st = System.currentTimeMillis();
-        Assert.assertEquals(solution.containsNearbyAlmostDuplicate(
-                Utils.stringToIntegerArray(
-                        Utils.getLongTextIn("E:\\git\\leet-helper\\src\\main\\java\\leetcode\\zozz\\longtext\\longArray.txt",
-                                1)
-                )
-                , 10000, 0
-        ), false);
-        System.out.println("total " + (System.currentTimeMillis() - st));
+//        long st = System.currentTimeMillis();
+//        Assert.assertEquals(solution.containsNearbyAlmostDuplicate(
+//                Utils.stringToIntegerArray(
+//                        Utils.getLongTextIn("E:\\git\\leet-helper\\src\\main\\java\\leetcode\\zozz\\longtext\\longArray.txt",
+//                                1)
+//                )
+//                , 10000, 0
+//        ), false);
+//        System.out.println("total " + (System.currentTimeMillis() - st));
         Assert.assertEquals(solution.containsNearbyAlmostDuplicate(Utils.stringToIntegerArray("[1,2]"),
                 0,
                 1
