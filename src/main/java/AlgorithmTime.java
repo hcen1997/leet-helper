@@ -1,3 +1,5 @@
+import java.math.BigInteger;
+
 public class AlgorithmTime {
 
     public static void main(String[] args) {
@@ -17,17 +19,14 @@ public class AlgorithmTime {
         System.out.println("On算法的操作时间是" + oprate_time * answer);
         System.out.println("Onln算法的操作时间是" + oprate_time * answer * Math.log(answer));
         System.out.println("On2算法的操作时间是" + oprate_time * answer * answer);
-        System.out.println("On!算法的操作时间是" + oprate_time * nto1(answer));
-
+        System.out.println("On!算法的操作时间是" + nto1(BigInteger.valueOf(answer)));
+        System.out.println(100L * 99L * 98L * 97L * 96L * 95L);
 
         System.out.println("可以看出, Oln的基本上不需要时间, onln的算法都是可以接受的");
         System.out.println("但是nn的算法是不可接受的, 当数据量增大的时候, 使用哪怕最基本的数据结构和算法, 也要应用算法");
     }
 
-    private static Long nto1(Long n) {
-        if (n < 0) {
-            return 1L;
-        }
-        return n == 1 ? 1 : n * nto1(n - 1);
+    private static BigInteger nto1(BigInteger n) {
+        return n.equals(BigInteger.ZERO) ? BigInteger.ONE : n.multiply(n.subtract(BigInteger.ONE));
     }
 }
