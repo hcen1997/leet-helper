@@ -1,15 +1,14 @@
 ### Leet Code 小助手  
-And some other stuff about programing
-#### 功能
-    ['help', 'all', 'remain', 'd1', 'u1', 'show', 'exit', 'leet']
-##### 详解
-    从random.org随机了99个0-600的数字(leetcode的新题目都有毒)  
-    然后每天做一点  
-    这些功能是帮我记录做了啥的  
-    vim格式的命令  
-    以及机智的eval  
-#### 想找到我的宝藏么
-    一切都在我的代码里
+本项目是一个java项目, 用java语言来做leetcode题目
+### 更新方式
+增加一个 java文件
+public class <问题名称>{
+    @Test test1(){}
+    class Solution {
+        public <返回值> <问题名称>(){}}}
+
+
 
 ps. python大法好  
 pps. really? python is better than java??  
+ppps. use as need, only adapter win
