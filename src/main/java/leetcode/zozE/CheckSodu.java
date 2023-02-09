@@ -11,9 +11,8 @@ public class CheckSodu {
 
     class Solution {
         public boolean isValidSudoku(char[][] board) {
-
+            Set<Character> cnt = new HashSet<>();
             for (int i = 0; i < 9; i++) {
-                Set<Character> cnt = new HashSet<>();
                 for (int j = 0; j < 9; j++) {
                     char c = board[i][j];
                     if (c != '.') {
@@ -24,9 +23,9 @@ public class CheckSodu {
                         }
                     }
                 }
+                cnt.clear();
             }
             for (int i = 0; i < 9; i++) {
-                Set<Character> cnt = new HashSet<>();
                 for (int j = 0; j < 9; j++) {
                     char c = board[j][i];
                     if (c != '.') {
@@ -37,12 +36,12 @@ public class CheckSodu {
                         }
                     }
                 }
+                cnt.clear();
             }
             for (int s = 0; s < 9; s++) {
-                Set<Character> cnt = new HashSet<>();
                 for (int i = s / 3 * 3; i < (s / 3 + 1) * 3; i++) {
                     for (int j = s % 3 * 3; j < (s % 3 + 1) * 3; j++) {
-//                        System.out.println(i + "" + j);
+                        //                        System.out.println(i + "" + j);
                         char c = board[i][j];
                         if (c != '.') {
                             if (!cnt.contains(c)) {
@@ -53,11 +52,13 @@ public class CheckSodu {
                         }
                     }
                 }
-//                System.out.println("out");
+                //                System.out.println("out");
+                cnt.clear();
             }
 
 
             return true;
         }
     }
+
 }
