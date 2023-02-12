@@ -1,5 +1,9 @@
 package leetcode.zozE;
 
+import leetcode.Utils;
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -24,15 +28,28 @@ public class Contest0212 {
         }
     }
 
+    @Test
+    public void t2() {
+        Solution2 solution2 = new Solution2();
+        long l = solution2.countFairPairs(Utils.stringToIntegerArray("[0,1,7,4,4,5]"), 3, 6);
+        Assert.assertEquals(6, l);
+    }
+
     class Solution2 {
         public long countFairPairs(int[] nums, int lower, int upper) {
             Arrays.sort(nums);
+            // 找到一个 nums[i] :  lower-nums[i] <= nums[j] <= upper - nums[i]
             long ans = 0;
+            // [1,2,3,4,5,6,7]  3,6   1: 2,5->4  2: 1,4->2  3: 0,3 brake
             for (int i = 0; i < nums.length; i++) {
                 int lo = lower - nums[i];
                 int up = upper - nums[i];
-                int il = Arrays.binarySearch(nums, lo);
-                int iu = Arrays.binarySearch(nums, up);
+                int j;
+                for (j = 1; i + j < nums.length; j++) {
+                    if (nums[i + j] < lo) continue;
+                    if (nums[i + j] > up) break;
+                    ans++;
+                }
             }
             return ans;
         }
@@ -76,6 +93,14 @@ public class Contest0212 {
                     cnt--;
                 }
             }
+        }
+    }
+
+    class Solution4 {
+        public int minimumScore(String s, String t) {
+            int bp[][] = new int[t.length()][t.length()];
+
+            return 0;
         }
     }
 }
