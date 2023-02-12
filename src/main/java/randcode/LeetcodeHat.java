@@ -10,4 +10,9 @@ public class LeetcodeHat {
         int mounth = 5400 / coinOneMouth;
         System.out.println(mounth);
     }
+    @Test
+    public void t1(){
+        System.out.println(Math.log10(10000)); // 4.0
+        System.out.println(Math.log(20000)); // 9.9
+    }
 }
