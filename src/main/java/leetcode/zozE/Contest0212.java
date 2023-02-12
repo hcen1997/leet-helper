@@ -44,14 +44,25 @@ public class Contest0212 {
             for (int i = 0; i < nums.length; i++) {
                 int lo = lower - nums[i];
                 int up = upper - nums[i];
-                int j;
-                for (j = 1; i + j < nums.length; j++) {
-                    if (nums[i + j] < lo) continue;
-                    if (nums[i + j] > up) break;
-                    ans++;
+                int iu = getIndex(nums, up), il = getIndex(nums, lo);
+                ans += iu - il - (i <= iu && i >= il ? 1 : 0);
+            }
+            return ans / 2;
+        }
+
+        // 1,2,3,4,5,6,6,7,8,9,10  : 6
+        // 找到第一个小于target的数字 // 2分查找
+        private int getIndex(int[] nums, int target) {
+            int l = -1, r = nums.length;
+            while (l != r) {
+                int mid = (l + r) / 2;
+                if (nums[mid] >= target) {
+                    r = mid;
+                } else {
+                    l = mid;
                 }
             }
-            return ans;
+            return l;
         }
     }
 
