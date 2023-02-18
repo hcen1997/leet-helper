@@ -14,7 +14,7 @@ public class OptTest {
         // 把交易表写在人里面了
         RandOptMan[] market = new RandOptMan[10];
         for (int i = 0; i < 10; i++) {
-            market[i] = new RandOptMan(market, i, 100);
+            market[i] = new RandOptMan(market, i, 100,false);
         }
 
         System.out.println("5000次模拟开始");
@@ -38,7 +38,9 @@ public class OptTest {
         // [m1,m2,...]
         stmp.delete(0, stmp.length());
         stmp.append("[");
+        int crc = 0;
         for (RandOptMan randOptMan : market) {
+            crc +=randOptMan.getMoney();
             stmp.append(randOptMan.getMoney());
             stmp.append(", ");
         }
@@ -46,6 +48,8 @@ public class OptTest {
             stmp.deleteCharAt(stmp.length() - 1);
         }
         stmp.append("]");
+        stmp.append(" crc=");
+        stmp.append(crc);
         System.out.println(stmp.toString());
     }
 }
