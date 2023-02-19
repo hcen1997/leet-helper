@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class SingleWeek0219 {
     class Solution {
@@ -77,6 +78,57 @@ public class SingleWeek0219 {
                 }
             }
             return i;
+        }
+    }
+
+    class Solution3 {
+        int mod = 1000000000 + 7;
+
+        public int squareFreeSubsets(int[] nums) {
+            int[] key = new int[40];
+            for (int i = 0; i < nums.length; i++) {
+                key[nums[i]]++;
+            }
+            int[] singleErr = new int[]{4, 9, 16, 25, 8, 12, 20, 24, 28, 18, 27};
+            int maxN = maxN(key);
+            int ans = 0;
+            for (int i = 1; i < maxN; i++) {
+                List<int[]> pare = new ArrayList<>();
+                // find pare
+                for (int j = 0; j < key.length; j++) {
+                    if (key[j] > 0
+                            && notIn(singleErr, key[i])) {
+                        ans += key[i];
+                    }
+                }
+                // add to sum
+                int sum = 1;
+                for (int[] ints : pare) {
+                    sum = (sum * ints[1]) % mod;
+                }
+                ans = (ans + sum) % mod;
+                pare.clear();
+            }
+            return ans;
+        }
+
+        private int maxN(int[] key) {
+            int ans = 0;
+            for (int i1 : key) {
+                if (i1 > 0) {
+                    ans++;
+                }
+            }
+            return ans;
+        }
+
+        private boolean notIn(int[] singleErr, int i) {
+            for (int i1 : singleErr) {
+                if (i1 == i) {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
