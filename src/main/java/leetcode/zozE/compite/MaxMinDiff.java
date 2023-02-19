@@ -1,5 +1,7 @@
 package leetcode.zozE.compite;
 
+import org.junit.Test;
+
 import java.util.Arrays;
 
 public class MaxMinDiff {
@@ -41,5 +43,23 @@ public class MaxMinDiff {
                 max = nums[r] - nums[l];
                 return max;
             }
+    }
+    @Test
+    public void t3(){
+        new Solution3().minImpossibleOR(null);
+    }
+
+    class Solution3 {
+        public int minImpossibleOR(int[] nums) {
+//            // 如果全是 1,2,4,8,16.... 最终答案是 16*2
+//            // 如果 没有 一些特殊值, 只是 3,7,15 ... 答案就是1/  1,2,3,7,15  第四位的数能表达吗?
+//            Arrays.sort(nums);
+//            // ans <= nums[last] *2
+//            for (int i = 1; i < 1000000; i++) {
+//                isOk(data,nums[i],i)?continue:i;
+//            }
+//            return max_data +1;
+            return 0;
+        }
     }
 }
